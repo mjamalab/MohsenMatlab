@@ -1,7 +1,7 @@
 
 clc
 clear all
-% close all
+close all
 format long
 addpath('../NXPlib','../CW')
 init_Signal20;
@@ -31,7 +31,7 @@ for k = 1:floor(length(RxData20)/64) - 1
     for kk = 1:40
         xcorr_pp = xcorr_pp + frame64(kk:kk+(Len - 1))*plusplus(kk);
     end
-    xcorr_pp.'
+    xcorr_pp.';
     xcorr_pp2 = abs(r_half(xcorr_pp)).^2
     Xcorr = r_half(r_half(xcorr_pp2).*r_rcp(rssi.'));
     dec2q(Xcorr)
